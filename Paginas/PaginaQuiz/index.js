@@ -53,9 +53,9 @@ export default function PaginaQuiz(){
       const proximaQuestao = RetornaQuestao();
   
       setQuestao(proximaQuestao)
-      setResposta()
+      setResposta("")
    }
-   
+
     return(
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
         <ImageBackground source={imgFundo} style={estilos.container}>
