@@ -16,45 +16,46 @@ export default function PaginaQuiz(){
         Keyboard.dismiss();
       };
 
-    const [resposta, setResposta] = useState(""); // variavel de estado da resposta do usuario
-    const [modal, setModal] = useState(false); // variavel de estado da visibilidade do modal
-    const [mensagem, setMensagem] =useState(); // variavel de estado que me permite escolher qual mensagem eu quero exibir
-    const [questao, setQuestao] = useState(RetornaQuestao()) // variavel de estado que me permite reeniciar a pergunta
-
-      function exibeMensagemAcerto(){ // função que altera a variavel de estado "mensagem" se a resposta estiver certa
-        setMensagem("Parabéns! \n Você acertou!")
-        setModal(true)
-      }
-
-      function exibeMensagemErro(){ // função que altera a variavel de estado "mensagem" se a resposta estiver errada
-        setMensagem("Ops! \n Você errou! ")
-        setModal(true)
-      }
-
-
-    function RespondeQuestao() { // função que consome o serviço que verifica se a resposta está certa com os parâmetros da resposta digitada pelo usuário, e do item Resultado do objeto criado na váriavel questão
-      const respondeuCerto = VerificaRespostaCerta(resposta, questao.Resultado)
-
-      if(respondeuCerto){
-        exibeMensagemAcerto();
-      }else{
-        exibeMensagemErro();
-      }
-
-      ProximaQuestao(); //Quando eu clicar no botão que tem essa função atribuida (RespondeQuestao), ele vai automaticamente gerar uma questão nova
-
-      if(resposta == ""){
-        alert("Você precisa digitar uma resposta");
-      }
-
- }
-
- function ProximaQuestao() { // função que reenicia a pergunta gerando outra
-    const proximaQuestao = RetornaQuestao();
-
-    setQuestao(proximaQuestao)
-    setResposta()
- }
+      const [resposta, setResposta] = useState(""); // variavel de estado da resposta do usuario
+      const [modal, setModal] = useState(false); // variavel de estado da visibilidade do modal
+      const [mensagem, setMensagem] =useState(); // variavel de estado que me permite escolher qual mensagem eu quero exibir
+      const [questao, setQuestao] = useState(RetornaQuestao()) // variavel de estado que me permite reeniciar a pergunta
+  
+        function exibeMensagemAcerto(){ // função que altera a variavel de estado "mensagem" se a resposta estiver certa
+          setMensagem("Parabéns! \n Você acertou!")
+          setModal(true)
+        }
+  
+        function exibeMensagemErro(){ // função que altera a variavel de estado "mensagem" se a resposta estiver errada
+          setMensagem("Ops! \n Você errou! ")
+          setModal(true)
+        }
+  
+  
+      function RespondeQuestao() { // função que consome o serviço que verifica se a resposta está certa com os parâmetros da resposta digitada pelo usuário, e do item Resultado do objeto criado na váriavel questão
+        const respondeuCerto = VerificaRespostaCerta(resposta, questao.Resultado)
+        
+        if(resposta == ""){
+          alert("Você precisa digitar uma resposta");
+          return;
+        }
+  
+        if(respondeuCerto){
+          exibeMensagemAcerto();
+        }else{
+          exibeMensagemErro();
+        }
+  
+        ProximaQuestao(); //Quando eu clicar no botão que tem essa função atribuida (RespondeQuestao), ele vai automaticamente gerar uma questão nova
+   }
+  
+   function ProximaQuestao() { // função que reenicia a pergunta gerando outra
+      const proximaQuestao = RetornaQuestao();
+  
+      setQuestao(proximaQuestao)
+      setResposta()
+   }
+   
     return(
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
         <ImageBackground source={imgFundo} style={estilos.container}>

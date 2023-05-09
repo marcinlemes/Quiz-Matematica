@@ -26,21 +26,24 @@ function servico_calculaResultado(x, y, operador){ // essa tem o objetivo de ret
     }
      
     // nessa sequência de "if e else if" temos apenas a montagem das contas e o armazenamento do resultado em uma variável
-    if(operador == '+'){ 
-    resultado = valorA + valorB
-        
+    if(operador == '+')
+    { 
+    resultado = valorA + valorB   
     }
 
-    else if (operador == '-'){
+    else if (operador == '-')
+    {
     resultado = valorA - valorB
     }
 
-    else if (operador == '/'){
+    else if (operador == '/')
+    {
         const resto = valorA % valorB;
         resultado = (valorA - resto) / valorB;
     }
 
-    else if (operador == 'x'){
+    else if (operador == 'x')
+    {
         resultado = valorA * valorB
     }
 
@@ -49,8 +52,8 @@ function servico_calculaResultado(x, y, operador){ // essa tem o objetivo de ret
 
 // Nas funções "geraX e geraY" é usado apenas o método nativo para escolher um número naturalmente juntamente com a condição if, para deixar o app mais complexo
 function geraX(operador) {
-    if(operador == '+'){
-        return Math.floor(Math.random() * 1000 + 1)
+    if(operador == '+' || operador == '-'){
+        return Math.floor(Math.random() * 999 + 1)
     }
 
     return Math.floor(Math.random() * 99 +1);
@@ -58,8 +61,8 @@ function geraX(operador) {
 
 function geraY(operador) {
 
-    if (operador == '+'){
-        return Math.floor(Math.random() * 500 + 1)
+    if (operador == '+'|| operador == '-'){
+        return Math.floor(Math.random() * 800 + 1)
     }
 
     return Math.floor(Math.random() * 9 + 1);
