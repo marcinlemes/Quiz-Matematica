@@ -47,7 +47,7 @@ function servico_calculaResultado(x, y, operador){ // essa tem o objetivo de ret
     return resultado
 }
 
-// Nas funções "geraX e geraY" é usado apenas o método nativo para escolher um número naturalmente juntamente com a condição if, para deixar o app mais complexo
+// Nas funções "geraX e geraY" é usado apenas o método nativo para escolher um número aleatóriamente juntamente com a condição if, para deixar o app mais complexo
 function geraX(operador) {
     if(operador == '+'){
         return Math.floor(Math.random() * 1000 + 1)
